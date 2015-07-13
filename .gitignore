@@ -1,6 +1,4 @@
-obj/
 *.rar
-
 
 # Windows image file caches
 Thumbs.db
@@ -22,15 +20,15 @@ ehthumbs.db
 *.userprefs
 
 # Build results
+#[Bb]in/
 [Dd]ebug/
 [Dd]ebugPublic/
-[Rr]elease/
+#[Rr]elease/
 [Rr]eleases/
 x64/
 x86/
 build/
 bld/
-[Bb]in/
 [Oo]bj/
 
 # Visual Studo 2015 cache/options directory

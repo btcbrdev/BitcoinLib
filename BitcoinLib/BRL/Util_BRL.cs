@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using Info.Blockchain.API.ExchangeRates;
 using BitcoinLib.BlockchainAPI;
 
-namespace Bitcoin.BRL
+namespace BitcoinLib.BRL
 {
-    public class Util_BRL
+    public static class Util_BRL
     {
         const string currencyBRL = "BRL";
 

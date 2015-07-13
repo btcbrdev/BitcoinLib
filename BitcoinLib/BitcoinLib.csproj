@@ -31,9 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BlockchainAPI, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\BlockchainAPI.1.0.3.0\lib\net40\BlockchainAPI.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="BlockchainAPI">
+      <HintPath>..\packages\BlockchainAPI.1.0.3.0\lib\net40\BlockchainAPI.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
