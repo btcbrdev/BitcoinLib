@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Globalization;
 using Info.Blockchain.API;
 using Info.Blockchain.API.ExchangeRates;
 
@@ -17,7 +18,7 @@ namespace BitcoinLib.BlockchainAPI
 
         public ExchangeRates(string apiCode = null)
         {
-            HttpClient.TimeoutMs = 5000;
+            HttpClient.TimeoutMs = 20000; //Default = 10000
             _apiCode = apiCode;
         }
 
@@ -68,6 +69,7 @@ namespace BitcoinLib.BlockchainAPI
         /// <param name="currency"></param>
         public double getToBtc(double value = 1.0, string currency = "USD")
         {
+            CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
             double Val = Info.Blockchain.API.ExchangeRates.ExchangeRates.ToBTC(currency, value, _apiCode);
             return Val;
         }

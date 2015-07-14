@@ -10,7 +10,7 @@ namespace BitcoinLib.BRL
 {
     public static class Util_BRL
     {
-        const string currencyBRL = "BRL";
+        const string currencySymbolBRL = "BRL";
 
         /// <summary>
         /// Pega o ticker da Blockchain com o valor em BRL.
@@ -20,7 +20,7 @@ namespace BitcoinLib.BRL
         public static Currency getBtcBRLTicker(string apiCode = null)
         {
             var _exR = new BitcoinLib.BlockchainAPI.ExchangeRates(apiCode);
-            return _exR.getBtcTicker(currencyBRL);
+            return _exR.getBtcTicker(currencySymbolBRL);
         }
         
         /// <summary>
@@ -31,7 +31,7 @@ namespace BitcoinLib.BRL
         public static double getBRLtoBtc(double valor = 1.00, string apiCode = null)
         {
             var _exR = new BitcoinLib.BlockchainAPI.ExchangeRates(apiCode);
-            return _exR.getToBtc(valor, currencyBRL);
+            return _exR.getToBtc(valor, currencySymbolBRL);
         }
     }
 }
