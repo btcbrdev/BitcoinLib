@@ -44,7 +44,7 @@ namespace BitcoinLib.BlockchainAPI
         /// Return all wallet addresses.
         /// </summary>
         /// <param name="confirmation">Number of confirmation.</param>
-        /// <returns>List of addresses</returns>
+        /// <returns>List of addresses.</returns>
         public List<Address> getWalletAddress(int confirmation = 0)
         {
             return BCw.ListAddresses(confirmation);
