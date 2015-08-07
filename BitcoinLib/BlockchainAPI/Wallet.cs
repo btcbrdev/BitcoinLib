@@ -11,6 +11,7 @@ namespace BitcoinLib.BlockchainAPI
     /// <summary>
     /// https://blockchain.info/api/create_wallet
     /// </summary>
+
     public class Wallet
     {
         private string _guid { get; set; }
@@ -22,7 +23,6 @@ namespace BitcoinLib.BlockchainAPI
         private string _apiCode { get; set; }
 
         private Info.Blockchain.API.Wallet.Wallet BCw { get; set; }
-
 
         /// <summary>
         /// Wallet information.
@@ -41,7 +41,7 @@ namespace BitcoinLib.BlockchainAPI
         }
 
         /// <summary>
-        /// Return all wallet addresses.
+        /// List all active addresses in a wallet. Also includes a 0 confirmation balance which should be used as an estimate only and will include unconfirmed transactions and possibly double spends.
         /// </summary>
         /// <param name="confirmation">Number of confirmation.</param>
         /// <returns>List of addresses</returns>
