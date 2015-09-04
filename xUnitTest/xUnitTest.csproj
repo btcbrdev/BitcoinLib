@@ -74,9 +74,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\BitcoinLib\BitcoinLib.csproj">
       <Project>{eb7c14e3-852f-4e91-902e-5e064b01570a}</Project>
       <Name>BitcoinLib</Name>
