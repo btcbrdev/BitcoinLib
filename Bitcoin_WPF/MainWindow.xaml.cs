@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Info.Blockchain;
+using BitcoinLib;
 
 namespace Bitcoin_WPF
 {
@@ -22,35 +23,25 @@ namespace Bitcoin_WPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        private BitcoinLib.BlockchainAPI.Wallet WL
+        {
+            get
+            {
+                return new BitcoinLib.BlockchainAPI.Wallet(tbGUID.Text, tbPassword.Password, tb2Password.Password, tbApiCode.Text);
+            }
+        }
+
+
         public MainWindow()
         {
             InitializeComponent();
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
         }
 
         private void WriteText(string ss)
         {
             tbMemo.Text += $"\r\n{ss}\r\n";
             tbMemo.ScrollToEnd();
-        }
-
-        private void tbnWalletAddr_Click(object sender, RoutedEventArgs e)
-        {
-            var w = new BitcoinLib.BlockchainAPI.Wallet(tbGUID.Text, tbPassword.Password, tb2Password.Text, tbApiCode.Text);
-
-            try
-            {
-                string tx = "";
-                foreach (var x in w.getWalletAddress())
-                {
-                    tx += ($"{DateTime.Now.ToString()} - {x.AddressStr} Balance: {Convert.ToString(x.Balance).PadRight(11)} T. Received: {Convert.ToString(x.TotalReceived).PadRight(14)} Label: {x.Label}\r\n");
-                }
-
-                WriteText(tx);
-            }
-            catch (Exception ex)
-            {
-                WriteText($"{DateTime.Now.ToString()} - ERROR: {ex.Message}");
-            }
         }
 
         private void btnTicker_Click(object sender, RoutedEventArgs e)
@@ -65,6 +56,100 @@ namespace Bitcoin_WPF
             }
 
             WriteText(s);
+        }
+
+        private void tbnWalletAddr_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string tx = "";
+                WriteText("--- Minimal 0 confirmatio ---");
+                foreach (var x in WL.getWalletAddress())
+                {
+                    tx += ($"{DateTime.Now.ToString()} - {x.AddressStr} Balance: {Bitcoin.displayDecimalFormat(x.Balance)} T. Received: {Bitcoin.displayDecimalFormat(x.TotalReceived)} Label: {x.Label}\r\n");
+                }
+                WriteText(tx);
+
+                tx = "";
+                WriteText("--- Minimal 12 confirmatio ---");
+                foreach (var x in WL.getWalletAddress(12))
+                {
+                    tx += ($"{DateTime.Now.ToString()} - {x.AddressStr} Balance: {Bitcoin.displayDecimalFormat(x.Balance)} T. Received: {Bitcoin.displayDecimalFormat(x.TotalReceived)} Label: {x.Label}\r\n");
+                }
+                WriteText(tx);
+            }
+            catch (Exception ex)
+            {
+                WriteText($"{DateTime.Now.ToString()} - ERROR: {ex.Message}");
+            }
+        }
+
+        private void tbnWalletBallance_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                WriteText($"{DateTime.Now.ToString()} - Wallet Balance ฿{Bitcoin.displayDecimalFormat(WL.WalletBalance())}");
+            }
+            catch (Exception ex)
+            {
+                WriteText($"{DateTime.Now.ToString()} - ERROR: {ex.Message}");
+            }
+        }
+
+        private void btnAddressBallance_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                WriteText("--- Minimal 0 confirmatio ---");
+                var ad = WL.getAddressBallance(tbAddress.Text);
+                WriteText($"{DateTime.Now.ToString()} - Address: {ad.AddressStr} - Ballance ฿{Bitcoin.displayDecimalFormat(ad.Balance)} - Total Received: {Bitcoin.displayDecimalFormat(ad.TotalReceived)} -Label: {ad.Label}");
+
+                WriteText("--- Minimal 12 confirmatio ---");
+                ad = WL.getAddressBallance(tbAddress.Text, 12);
+                WriteText($"{DateTime.Now.ToString()} - Address: {ad.AddressStr} - Ballance ฿{Bitcoin.displayDecimalFormat(ad.Balance)} - Total Received: {Bitcoin.displayDecimalFormat(ad.TotalReceived)} -Label: {ad.Label}");
+            }
+            catch (Exception ex)
+            {
+                WriteText($"{DateTime.Now.ToString()} - ERROR: {ex.Message}");
+            }
+        }
+
+        private void btnNewAddress_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var ad = WL.NewAddress($"test in {DateTime.Now.ToString()}");
+                WriteText($"{DateTime.Now.ToString()} - Address: {ad.AddressStr} - Ballance ฿{Bitcoin.displayDecimalFormat(ad.Balance)} - Total Received: {Bitcoin.displayDecimalFormat(ad.TotalReceived)} -Label: {ad.Label}");
+            }
+            catch (Exception ex)
+            {
+                WriteText($"{DateTime.Now.ToString()} - ERROR: {ex.Message}");
+            }
+        }
+
+        private void btnArchive_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                WriteText($"Archived - {WL.ArchiveAddress(tbAddress.Text)}");
+            }
+            catch (Exception ex)
+            {
+                WriteText($"{DateTime.Now.ToString()} - ERROR: {ex.Message}");
+            }
+
+        }
+
+        private void btnUnArchive_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                WriteText($"Unarchived - {WL.UnArchiveAdrres(tbAddress.Text)}");
+            }
+            catch (Exception ex)
+            {
+                WriteText($"{DateTime.Now.ToString()} - ERROR: {ex.Message}");
+            }
         }
     }
 }

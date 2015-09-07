@@ -13,5 +13,11 @@ namespace BitcoinLib
         /// https://blockchain.info/api/blockchain_wallet_api
         /// </summary>
         public const double _btcDivide = 100000000;
+
+        public static string displayDecimalFormat(long val)
+        {
+            double v = val / _btcDivide;
+            return v.ToString();
+        }
     }
 }

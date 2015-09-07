@@ -49,7 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BitDivide.cs" />
+    <Compile Include="Bitcoin.cs" />
     <Compile Include="BlockchainAPI\ExchangeRates.cs" />
     <Compile Include="BlockchainAPI\Wallet.cs" />
     <Compile Include="BRL\Util_BRL.cs" />

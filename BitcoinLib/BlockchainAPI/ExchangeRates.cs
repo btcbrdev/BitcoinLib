@@ -14,12 +14,17 @@ namespace BitcoinLib.BlockchainAPI
     public class ExchangeRates
     {
         private string _apiCode { get; set; }
-
         private Dictionary<string, Currency> __Tickers { get; set; }
+
+        public int timeOut
+        {
+            get { return HttpClient.TimeoutMs; }
+            set { HttpClient.TimeoutMs = value; }
+        }
 
         public ExchangeRates(string apiCode = null)
         {
-            HttpClient.TimeoutMs = 20000; //20seg - Default = 10000
+            timeOut = 20000; //20seg - Default = 10000
             _apiCode = apiCode;
         }
 
@@ -53,7 +58,7 @@ namespace BitcoinLib.BlockchainAPI
         {
             return Tickers;
         }
-        
+
         /// <summary>
         /// Get the value of Blockchain the ticker.
         /// </summary>
