@@ -14,7 +14,7 @@
         <Label Content="API Code" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="593,28,0,0" Height="26" Width="59"/>
         <PasswordBox x:Name="tbPassword" HorizontalAlignment="Left" Margin="342,54,0,0" VerticalAlignment="Top" Width="145" Height="23" TabIndex="2" VerticalContentAlignment="Center"/>
         <PasswordBox x:Name="tb2Password" HorizontalAlignment="Left" Margin="492,54,0,0" VerticalAlignment="Top" Width="96" Height="23" TabIndex="3" VerticalContentAlignment="Center"/>
-        <TextBox x:Name="tbMemo" Margin="10,256,10,10" ScrollViewer.HorizontalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" IsReadOnly="True" FontFamily="Courier New">
+        <TextBox x:Name="tbMemo" Margin="10,241,10,10" ScrollViewer.HorizontalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" IsReadOnly="True" FontFamily="Courier New">
             <TextBox.Background>
                 <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                     <GradientStop Color="#FFF3F3F3"/>
@@ -23,7 +23,7 @@
             </TextBox.Background>
         </TextBox>
         <Label x:Name="label" Content="All transactions are sent in HTTPS protocol" VerticalAlignment="Top" FontWeight="Bold" Background="#FFEC7E7E" HorizontalContentAlignment="Center" Height="26" FontSize="14.667"/>
-        <TabControl x:Name="tabControl" Height="169" Margin="10,82,10,0" VerticalAlignment="Top">
+        <TabControl x:Name="tabControl" Height="154" Margin="10,82,10,0" VerticalAlignment="Top">
             <TabItem Header="Wallet Management" Margin="-2,-2,-17,-2">
                 <TabItem.Background>
                     <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
@@ -32,16 +32,17 @@
                     </LinearGradientBrush>
                 </TabItem.Background>
                 <Grid Background="#FFE5E5E5" Margin="0,0,0,0">
-                    <Button x:Name="tbnWalletAddr" Content="Get Wallet Address" HorizontalAlignment="Left" Margin="2,53,0,0" VerticalAlignment="Top" Width="114" Height="27" Click="tbnWalletAddr_Click" TabIndex="5"/>
-                    <Button x:Name="btnTicker" Content="Get Tickers" HorizontalAlignment="Left" Margin="2,21,0,0" VerticalAlignment="Top" Width="114" Height="27" Click="btnTicker_Click"/>
-                    <Button x:Name="tbnWalletBallance" Content="Wallet Ballance" HorizontalAlignment="Left" Margin="2,85,0,0" VerticalAlignment="Top" Width="114" Height="27" TabIndex="5" Click="tbnWalletBallance_Click"/>
-                    <GroupBox x:Name="groupBox" Header="Inform wallet address" Height="91" VerticalAlignment="Top" Margin="205,21,0,0" HorizontalAlignment="Left" Width="419">
+                    <Button x:Name="tbnWalletAddr" Content="Get Wallet Address" HorizontalAlignment="Left" Margin="10,48,0,0" VerticalAlignment="Top" Width="132" Height="27" Click="tbnWalletAddr_Click" TabIndex="5"/>
+                    <Button x:Name="btnTicker" Content="Get Tickers" HorizontalAlignment="Left" Margin="10,11,0,0" VerticalAlignment="Top" Width="132" Height="27" Click="btnTicker_Click"/>
+                    <Button x:Name="tbnWalletBallance" Content="Wallet Ballance" HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top" Width="132" Height="27" TabIndex="5" Click="tbnWalletBallance_Click"/>
+                    <GroupBox x:Name="groupBox" Header="Wallet address check" Height="101" VerticalAlignment="Top" Margin="205,11,0,0" HorizontalAlignment="Left" Width="456">
                         <Grid Margin="0,0,-2,-12">
-                            <Button x:Name="btnWalletBallance" Content="Address Ballance" HorizontalAlignment="Left" VerticalAlignment="Top" Width="97" Height="27" TabIndex="5" Margin="2,10,0,0" Click="btnAddressBallance_Click"/>
-                            <TextBox x:Name="tbAddress" Height="23" Margin="2,46,3,0" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
-                            <Button x:Name="btnNewAddress" Content="New Address" HorizontalAlignment="Left" VerticalAlignment="Top" Width="86" Height="27" TabIndex="5" Margin="120,10,0,0" Click="btnNewAddress_Click"/>
-                            <Button x:Name="btnArchive" Content="Archive" HorizontalAlignment="Left" Margin="230,10,0,0" VerticalAlignment="Top" Width="75" Height="27" Click="btnArchive_Click"/>
-                            <Button x:Name="btnUnArchive" Content="UnArchive" HorizontalAlignment="Left" Margin="329,10,0,0" VerticalAlignment="Top" Width="75" Height="27" Click="btnUnArchive_Click"/>
+                            <Button x:Name="btnWalletBallance" Content="Address Ballance" HorizontalAlignment="Left" VerticalAlignment="Top" Width="97" Height="27" TabIndex="5" Margin="2,5,0,0" Click="btnAddressBallance_Click" HorizontalContentAlignment="Center"/>
+                            <TextBox x:Name="tbAddress" Height="23" Margin="2,56,3,0" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
+                            <Button x:Name="btnNewAddress" Content="New Address" HorizontalAlignment="Left" VerticalAlignment="Top" Width="103" Height="27" TabIndex="5" Margin="104,5,0,0" Click="btnNewAddress_Click" HorizontalContentAlignment="Center"/>
+                            <Button x:Name="btnArchive" Content="Archive" HorizontalAlignment="Left" Margin="212,5,0,0" VerticalAlignment="Top" Width="100" Height="27" Click="btnArchive_Click" HorizontalContentAlignment="Center"/>
+                            <Button x:Name="btnUnArchive" Content="UnArchive" HorizontalAlignment="Left" Margin="317,5,0,0" VerticalAlignment="Top" Width="89" Height="27" Click="btnUnArchive_Click" HorizontalContentAlignment="Center"/>
+                            <Label x:Name="label2" Content="Put one of yours wallet address" HorizontalAlignment="Left" Margin="0,34,0,0" VerticalAlignment="Top"/>
                         </Grid>
                     </GroupBox>
                 </Grid>

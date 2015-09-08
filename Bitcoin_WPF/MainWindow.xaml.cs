@@ -52,7 +52,7 @@ namespace Bitcoin_WPF
 
             foreach (var item in c.Values.ToList())
             {
-                s += $"symbol: {item.Symbol.PadRight(5)} price 15m: {item.Price15m} last:{item.Last} buy: {item.Buy} sell: {item.Sell}\r\n";
+                s += $"symbol: {item.Symbol.PadRight(5)} price 15m: {item.Price15m.ToString().PadRight(10, ' ')} last: {item.Last.ToString().PadRight(10, ' ')} buy: {item.Buy.ToString().PadRight(10, ' ')} sell: {item.Sell.ToString().PadRight(10, ' ')}\r\n";
             }
 
             WriteText(s);
