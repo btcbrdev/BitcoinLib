@@ -5,6 +5,7 @@ using Xunit.Abstractions;
 namespace xUnitTest
 {
     // http://xunit.github.io/docs/getting-started.html
+    // If need helo to xunit in Visual Studio go to http://xunit.github.io/docs/running-tests-in-vs.html
 
     public class UnitTest_Util_BRL
     {
@@ -19,10 +20,10 @@ namespace xUnitTest
         public void getBtcBRLTicker()
         {
             var T = BitcoinLib.BRL.Util_BRL.getBtcBRLTicker();
-            
+
             var j = Newtonsoft.Json.JsonConvert.SerializeObject(T);
             output.WriteLine(j.ToString());
-            
+
             Assert.IsType(typeof(Info.Blockchain.API.ExchangeRates.Currency), T);
         }
 
