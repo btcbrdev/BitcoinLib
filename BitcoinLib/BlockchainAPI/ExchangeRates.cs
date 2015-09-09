@@ -9,16 +9,22 @@ namespace BitcoinLib.BlockchainAPI
     /// <summary>
     /// API Doc
     /// https://blockchain.info/api/exchange_rates_api
+    /// https://github.com/blockchain/api-v1-client-csharp
     /// </summary>
     public class ExchangeRates
     {
         private string _apiCode { get; set; }
-
         private Dictionary<string, Currency> __Tickers { get; set; }
+
+        public int timeOut
+        {
+            get { return HttpClient.TimeoutMs; }
+            set { HttpClient.TimeoutMs = value; }
+        }
 
         public ExchangeRates(string apiCode = null)
         {
-            HttpClient.TimeoutMs = 20000; //Default = 10000
+            timeOut = 20000; //20seg - Default = 10000
             _apiCode = apiCode;
         }
 
@@ -48,11 +54,11 @@ namespace BitcoinLib.BlockchainAPI
         /// Return list of all tickers.
         /// </summary>
         /// <returns></returns>
-        public Dictionary<string, Currency> getTicker()
+        public Dictionary<string, Currency> getTickers()
         {
             return Tickers;
         }
-        
+
         /// <summary>
         /// Get the value of Blockchain the ticker.
         /// </summary>

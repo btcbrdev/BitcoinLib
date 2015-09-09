@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitcoinLib", "BitcoinLib\Bi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xUnitTest", "xUnitTest\xUnitTest.csproj", "{02D7B4DA-903A-428C-B7B8-DA0E3D50A959}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bitcoin_WPF", "Bitcoin_WPF\Bitcoin_WPF.csproj", "{86BD2848-5181-4D71-81C5-57468087A23F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{02D7B4DA-903A-428C-B7B8-DA0E3D50A959}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02D7B4DA-903A-428C-B7B8-DA0E3D50A959}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02D7B4DA-903A-428C-B7B8-DA0E3D50A959}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86BD2848-5181-4D71-81C5-57468087A23F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86BD2848-5181-4D71-81C5-57468087A23F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86BD2848-5181-4D71-81C5-57468087A23F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86BD2848-5181-4D71-81C5-57468087A23F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,74 @@
+﻿<Window x:Class="Bitcoin_WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="BitcoinLib &amp; Blockchain - Test" Height="522.325" Width="792.586">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Wallet GUID" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,28,0,0" Height="26" Width="75"/>
+        <TextBox x:Name="tbGUID" HorizontalAlignment="Left" TextWrapping="Wrap" Width="327" Margin="10,54,0,0" Height="23" VerticalAlignment="Top" TabIndex="1" VerticalContentAlignment="Center"/>
+        <Label Content="Password" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="342,28,0,0" Height="26" Width="60"/>
+        <Label Content="2º Password" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="492,28,0,0" Height="26" Width="75"/>
+        <TextBox x:Name="tbApiCode" HorizontalAlignment="Left" TextWrapping="Wrap" Width="75" Margin="593,54,0,0" Height="23" VerticalAlignment="Top" TabIndex="4" VerticalContentAlignment="Center"/>
+        <Label Content="API Code" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="593,28,0,0" Height="26" Width="59"/>
+        <PasswordBox x:Name="tbPassword" HorizontalAlignment="Left" Margin="342,54,0,0" VerticalAlignment="Top" Width="145" Height="23" TabIndex="2" VerticalContentAlignment="Center"/>
+        <PasswordBox x:Name="tb2Password" HorizontalAlignment="Left" Margin="492,54,0,0" VerticalAlignment="Top" Width="96" Height="23" TabIndex="3" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="tbMemo" Margin="10,241,10,10" ScrollViewer.HorizontalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" IsReadOnly="True" FontFamily="Courier New">
+            <TextBox.Background>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF3F3F3"/>
+                    <GradientStop Color="#FFE8DCC2" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBox.Background>
+        </TextBox>
+        <Label x:Name="label" Content="All transactions are sent in HTTPS protocol" VerticalAlignment="Top" FontWeight="Bold" Background="#FFEC7E7E" HorizontalContentAlignment="Center" Height="26" FontSize="14.667"/>
+        <TabControl x:Name="tabControl" Height="154" Margin="10,82,10,0" VerticalAlignment="Top">
+            <TabItem Header="Wallet Management" Margin="-2,-2,-17,-2">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                        <GradientStop Color="#FFA8F39C" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
+                <Grid Background="#FFE5E5E5" Margin="0,0,0,0">
+                    <Button x:Name="tbnWalletAddr" Content="Get Wallet Address" HorizontalAlignment="Left" Margin="10,48,0,0" VerticalAlignment="Top" Width="132" Height="27" Click="tbnWalletAddr_Click" TabIndex="5"/>
+                    <Button x:Name="btnTicker" Content="Get Tickers" HorizontalAlignment="Left" Margin="10,11,0,0" VerticalAlignment="Top" Width="132" Height="27" Click="btnTicker_Click"/>
+                    <Button x:Name="tbnWalletBallance" Content="Wallet Ballance" HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top" Width="132" Height="27" TabIndex="5" Click="tbnWalletBallance_Click"/>
+                    <GroupBox x:Name="groupBox" Header="Wallet address check" Height="101" VerticalAlignment="Top" Margin="205,11,0,0" HorizontalAlignment="Left" Width="544">
+                        <Grid Margin="0,0,-1,-10">
+                            <Button x:Name="btnWalletBallance" Content="Address Ballance" HorizontalAlignment="Left" VerticalAlignment="Top" Width="129" Height="27" TabIndex="5" Margin="2,5,0,0" Click="btnAddressBallance_Click" HorizontalContentAlignment="Center"/>
+                            <TextBox x:Name="tbAddress" Height="23" Margin="2,56,3,0" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
+                            <Button x:Name="btnNewAddress" Content="New Address" HorizontalAlignment="Left" VerticalAlignment="Top" Width="129" Height="27" TabIndex="5" Margin="164,5,0,0" Click="btnNewAddress_Click" HorizontalContentAlignment="Center"/>
+                            <Button x:Name="btnArchive" Content="Archive" HorizontalAlignment="Left" Margin="324,5,0,0" VerticalAlignment="Top" Width="100" Height="27" Click="btnArchive_Click" HorizontalContentAlignment="Center"/>
+                            <Button x:Name="btnUnArchive" Content="UnArchive" HorizontalAlignment="Left" Margin="429,5,0,0" VerticalAlignment="Top" Width="101" Height="27" Click="btnUnArchive_Click" HorizontalContentAlignment="Center"/>
+                            <Label x:Name="label2" Content="Put one of yours wallet address" HorizontalAlignment="Left" Margin="0,34,0,0" VerticalAlignment="Top"/>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Wallet Transaction" Margin="16,-2,-41,-2">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFE40000" Offset="0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
+                <Grid Background="#FFE5E5E5" Margin="0,0,0,0">
+                    <Label x:Name="label_Copy" Content="CAUTION - Its a real transaction" VerticalAlignment="Top" FontWeight="Bold" Background="#FFF7C8C8" HorizontalContentAlignment="Center" Height="26" FontSize="13.333"/>
+                    <Label x:Name="label1" Content="To Address:" HorizontalAlignment="Left" Margin="10,26,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="tbSendAdr" HorizontalAlignment="Left" Height="23" Margin="98,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="286"/>
+                    <Label x:Name="label1_Copy" Content="From Address:" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="tbFrmAdr" HorizontalAlignment="Left" Height="23" Margin="98,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="286" Text="(optional)"/>
+                    <Label x:Name="label1_Copy1" Content="Amount:" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="tbAmount" HorizontalAlignment="Left" Height="23" Margin="98,77,0,0" TextWrapping="Wrap" Text="0.00000000" VerticalAlignment="Top" Width="77"/>
+                    <Label x:Name="label1_Copy2" Content="Fee:" HorizontalAlignment="Left" Margin="272,74,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="tbFee" HorizontalAlignment="Left" Height="23" Margin="305,77,0,0" TextWrapping="Wrap" Text="(optional)" VerticalAlignment="Top" Width="79"/>
+                    <Label x:Name="label1_Copy3" Content="Message:" HorizontalAlignment="Left" Margin="10,98,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="tbMessage" HorizontalAlignment="Left" Height="23" Margin="98,101,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="286" Text="(optional)"/>
+                    <Button x:Name="btnSendBitcoin" Content="Send Bitcoins" HorizontalAlignment="Left" Margin="414,50,0,0" VerticalAlignment="Top" Width="172" Height="50" Foreground="#FFAC1818" FontWeight="Bold" BorderBrush="Red" UseLayoutRounding="False" Background="#FFFDD9D9" Click="btnSendBitcoin_Click"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
