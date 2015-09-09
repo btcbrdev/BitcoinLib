@@ -35,13 +35,13 @@
                     <Button x:Name="tbnWalletAddr" Content="Get Wallet Address" HorizontalAlignment="Left" Margin="10,48,0,0" VerticalAlignment="Top" Width="132" Height="27" Click="tbnWalletAddr_Click" TabIndex="5"/>
                     <Button x:Name="btnTicker" Content="Get Tickers" HorizontalAlignment="Left" Margin="10,11,0,0" VerticalAlignment="Top" Width="132" Height="27" Click="btnTicker_Click"/>
                     <Button x:Name="tbnWalletBallance" Content="Wallet Ballance" HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top" Width="132" Height="27" TabIndex="5" Click="tbnWalletBallance_Click"/>
-                    <GroupBox x:Name="groupBox" Header="Wallet address check" Height="101" VerticalAlignment="Top" Margin="205,11,0,0" HorizontalAlignment="Left" Width="456">
-                        <Grid Margin="0,0,-2,-12">
-                            <Button x:Name="btnWalletBallance" Content="Address Ballance" HorizontalAlignment="Left" VerticalAlignment="Top" Width="97" Height="27" TabIndex="5" Margin="2,5,0,0" Click="btnAddressBallance_Click" HorizontalContentAlignment="Center"/>
+                    <GroupBox x:Name="groupBox" Header="Wallet address check" Height="101" VerticalAlignment="Top" Margin="205,11,0,0" HorizontalAlignment="Left" Width="544">
+                        <Grid Margin="0,0,-1,-10">
+                            <Button x:Name="btnWalletBallance" Content="Address Ballance" HorizontalAlignment="Left" VerticalAlignment="Top" Width="129" Height="27" TabIndex="5" Margin="2,5,0,0" Click="btnAddressBallance_Click" HorizontalContentAlignment="Center"/>
                             <TextBox x:Name="tbAddress" Height="23" Margin="2,56,3,0" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
-                            <Button x:Name="btnNewAddress" Content="New Address" HorizontalAlignment="Left" VerticalAlignment="Top" Width="103" Height="27" TabIndex="5" Margin="104,5,0,0" Click="btnNewAddress_Click" HorizontalContentAlignment="Center"/>
-                            <Button x:Name="btnArchive" Content="Archive" HorizontalAlignment="Left" Margin="212,5,0,0" VerticalAlignment="Top" Width="100" Height="27" Click="btnArchive_Click" HorizontalContentAlignment="Center"/>
-                            <Button x:Name="btnUnArchive" Content="UnArchive" HorizontalAlignment="Left" Margin="317,5,0,0" VerticalAlignment="Top" Width="89" Height="27" Click="btnUnArchive_Click" HorizontalContentAlignment="Center"/>
+                            <Button x:Name="btnNewAddress" Content="New Address" HorizontalAlignment="Left" VerticalAlignment="Top" Width="129" Height="27" TabIndex="5" Margin="164,5,0,0" Click="btnNewAddress_Click" HorizontalContentAlignment="Center"/>
+                            <Button x:Name="btnArchive" Content="Archive" HorizontalAlignment="Left" Margin="324,5,0,0" VerticalAlignment="Top" Width="100" Height="27" Click="btnArchive_Click" HorizontalContentAlignment="Center"/>
+                            <Button x:Name="btnUnArchive" Content="UnArchive" HorizontalAlignment="Left" Margin="429,5,0,0" VerticalAlignment="Top" Width="101" Height="27" Click="btnUnArchive_Click" HorizontalContentAlignment="Center"/>
                             <Label x:Name="label2" Content="Put one of yours wallet address" HorizontalAlignment="Left" Margin="0,34,0,0" VerticalAlignment="Top"/>
                         </Grid>
                     </GroupBox>
@@ -55,13 +55,18 @@
                     </LinearGradientBrush>
                 </TabItem.Background>
                 <Grid Background="#FFE5E5E5" Margin="0,0,0,0">
-                    <Label x:Name="label_Copy" Content="CAUTION - Its a real transaction" VerticalAlignment="Top" FontWeight="Bold" Background="#FFF7C8C8" HorizontalContentAlignment="Center" Height="26" FontSize="13.333" Margin="0,0,-26,0"/>
-                    <Label x:Name="label1" Content="To Address:" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="86,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="286"/>
-                    <Label x:Name="label1_Copy" Content="To Address:" HorizontalAlignment="Left" Margin="10,86,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Height="23" Margin="86,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="286"/>
-                    <Label x:Name="label1_Copy1" Content="Amount:" HorizontalAlignment="Left" Margin="10,58,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="textBox_Copy1" HorizontalAlignment="Left" Height="23" Margin="86,62,0,0" TextWrapping="Wrap" Text="0.00050000" VerticalAlignment="Top" Width="77"/>
+                    <Label x:Name="label_Copy" Content="CAUTION - Its a real transaction" VerticalAlignment="Top" FontWeight="Bold" Background="#FFF7C8C8" HorizontalContentAlignment="Center" Height="26" FontSize="13.333"/>
+                    <Label x:Name="label1" Content="To Address:" HorizontalAlignment="Left" Margin="10,26,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="tbSendAdr" HorizontalAlignment="Left" Height="23" Margin="98,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="286"/>
+                    <Label x:Name="label1_Copy" Content="From Address:" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="tbFrmAdr" HorizontalAlignment="Left" Height="23" Margin="98,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="286" Text="(optional)"/>
+                    <Label x:Name="label1_Copy1" Content="Amount:" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="tbAmount" HorizontalAlignment="Left" Height="23" Margin="98,77,0,0" TextWrapping="Wrap" Text="0.00000000" VerticalAlignment="Top" Width="77"/>
+                    <Label x:Name="label1_Copy2" Content="Fee:" HorizontalAlignment="Left" Margin="272,74,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="tbFee" HorizontalAlignment="Left" Height="23" Margin="305,77,0,0" TextWrapping="Wrap" Text="(optional)" VerticalAlignment="Top" Width="79"/>
+                    <Label x:Name="label1_Copy3" Content="Message:" HorizontalAlignment="Left" Margin="10,98,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="tbMessage" HorizontalAlignment="Left" Height="23" Margin="98,101,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="286" Text="(optional)"/>
+                    <Button x:Name="btnSendBitcoin" Content="Send Bitcoins" HorizontalAlignment="Left" Margin="414,50,0,0" VerticalAlignment="Top" Width="172" Height="50" Foreground="#FFAC1818" FontWeight="Bold" BorderBrush="Red" UseLayoutRounding="False" Background="#FFFDD9D9" Click="btnSendBitcoin_Click"/>
                 </Grid>
             </TabItem>
         </TabControl>

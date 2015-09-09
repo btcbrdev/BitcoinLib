@@ -66,7 +66,7 @@ namespace Bitcoin_WPF
                 WriteText("--- Minimal 0 confirmatio ---");
                 foreach (var x in WL.getWalletAddress())
                 {
-                    tx += ($"{DateTime.Now.ToString()} - {x.AddressStr} Balance: {Bitcoin.displayDecimalFormat(x.Balance)} T. Received: {Bitcoin.displayDecimalFormat(x.TotalReceived)} Label: {x.Label}\r\n");
+                    tx += ($"{DateTime.Now.ToString()} - {x.AddressStr} Balance: {Bitcoin.BTCtoDecimalFormat(x.Balance)} T. Received: {Bitcoin.BTCtoDecimalFormat(x.TotalReceived)} Label: {x.Label}\r\n");
                 }
                 WriteText(tx);
 
@@ -74,7 +74,7 @@ namespace Bitcoin_WPF
                 WriteText("--- Minimal 12 confirmatio ---");
                 foreach (var x in WL.getWalletAddress(12))
                 {
-                    tx += ($"{DateTime.Now.ToString()} - {x.AddressStr} Balance: {Bitcoin.displayDecimalFormat(x.Balance)} T. Received: {Bitcoin.displayDecimalFormat(x.TotalReceived)} Label: {x.Label}\r\n");
+                    tx += ($"{DateTime.Now.ToString()} - {x.AddressStr} Balance: {Bitcoin.BTCtoDecimalFormat(x.Balance)} T. Received: {Bitcoin.BTCtoDecimalFormat(x.TotalReceived)} Label: {x.Label}\r\n");
                 }
                 WriteText(tx);
             }
@@ -88,7 +88,7 @@ namespace Bitcoin_WPF
         {
             try
             {
-                WriteText($"{DateTime.Now.ToString()} - Wallet Balance ฿{Bitcoin.displayDecimalFormat(WL.WalletBalance())}");
+                WriteText($"{DateTime.Now.ToString()} - Wallet Balance ฿{Bitcoin.BTCtoDecimalFormat(WL.WalletBalance())}");
             }
             catch (Exception ex)
             {
@@ -102,11 +102,11 @@ namespace Bitcoin_WPF
             {
                 WriteText("--- Minimal 0 confirmatio ---");
                 var ad = WL.getAddressBallance(tbAddress.Text);
-                WriteText($"{DateTime.Now.ToString()} - Address: {ad.AddressStr} - Ballance ฿{Bitcoin.displayDecimalFormat(ad.Balance)} - Total Received: {Bitcoin.displayDecimalFormat(ad.TotalReceived)} -Label: {ad.Label}");
+                WriteText($"{DateTime.Now.ToString()} - Address: {ad.AddressStr} - Ballance ฿{Bitcoin.BTCtoDecimalFormat(ad.Balance)} - Total Received: {Bitcoin.BTCtoDecimalFormat(ad.TotalReceived)} -Label: {ad.Label}");
 
                 WriteText("--- Minimal 12 confirmatio ---");
                 ad = WL.getAddressBallance(tbAddress.Text, 12);
-                WriteText($"{DateTime.Now.ToString()} - Address: {ad.AddressStr} - Ballance ฿{Bitcoin.displayDecimalFormat(ad.Balance)} - Total Received: {Bitcoin.displayDecimalFormat(ad.TotalReceived)} -Label: {ad.Label}");
+                WriteText($"{DateTime.Now.ToString()} - Address: {ad.AddressStr} - Ballance ฿{Bitcoin.BTCtoDecimalFormat(ad.Balance)} - Total Received: {Bitcoin.BTCtoDecimalFormat(ad.TotalReceived)} -Label: {ad.Label}");
             }
             catch (Exception ex)
             {
@@ -119,7 +119,7 @@ namespace Bitcoin_WPF
             try
             {
                 var ad = WL.NewAddress($"test in {DateTime.Now.ToString()}");
-                WriteText($"{DateTime.Now.ToString()} - Address: {ad.AddressStr} - Ballance ฿{Bitcoin.displayDecimalFormat(ad.Balance)} - Total Received: {Bitcoin.displayDecimalFormat(ad.TotalReceived)} -Label: {ad.Label}");
+                WriteText($"{DateTime.Now.ToString()} - Address: {ad.AddressStr} - Ballance ฿{Bitcoin.BTCtoDecimalFormat(ad.Balance)} - Total Received: {Bitcoin.BTCtoDecimalFormat(ad.TotalReceived)} -Label: {ad.Label}");
             }
             catch (Exception ex)
             {
@@ -145,6 +145,47 @@ namespace Bitcoin_WPF
             try
             {
                 WriteText($"Unarchived - {WL.UnArchiveAdrres(tbAddress.Text)}");
+            }
+            catch (Exception ex)
+            {
+                WriteText($"{DateTime.Now.ToString()} - ERROR: {ex.Message}");
+            }
+        }
+
+        private void btnSendBitcoin_Click(object sender, RoutedEventArgs e)
+        {
+            long amount = 0;
+            long? fee = null;
+            string fromAdr = null, msg = null;
+
+            try
+            {
+                amount = Bitcoin.DecimalFormatToBTC(Convert.ToDouble(tbAmount.Text));
+
+                if (tbSendAdr.Text.Length <= 0)
+                    WriteText("Set send address !");
+
+                if (amount <= 0)
+                    WriteText("Set amount more than 0.00000100 !");
+
+                if (tbFrmAdr.Text != "(optional)")
+                    fromAdr = tbFrmAdr.Text;
+
+                if (tbMessage.Text != "(optional)")
+                    msg = tbMessage.Text;
+
+                try
+                {
+                    if(tbFee.Text != "(optional)")
+                        fee = Bitcoin.DecimalFormatToBTC(Convert.ToDouble(tbFee.Text));
+                }
+                catch { }
+
+                // Send Bitcoins.
+                var x = WL.Send(tbSendAdr.Text, amount, fromAdr, fee, msg);
+
+                // If Ok, log transaction hash.
+                WriteText($"Your Transaction\r\nHash: {x.TxHash} - Message: {x.Message} - Notice: {x.Notice}");
             }
             catch (Exception ex)
             {

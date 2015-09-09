@@ -14,10 +14,19 @@ namespace BitcoinLib
         /// </summary>
         public const double _btcDivide = 100000000;
 
-        public static string displayDecimalFormat(long val)
+        public static string BTCtoDecimalFormat(long val)
         {
             double v = val / _btcDivide;
             return v.ToString();
+        }
+
+        public static long DecimalFormatToBTC(double? val)
+        {
+            if (val <= 0)
+                return 0;
+
+            long v = Convert.ToInt64(val * _btcDivide);
+            return v;
         }
     }
 }
