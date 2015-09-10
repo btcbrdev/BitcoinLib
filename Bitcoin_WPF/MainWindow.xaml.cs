@@ -12,8 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Info.Blockchain;
 using BitcoinLib;
+using BitcoinLib.BlockchainAPI;
 
 namespace Bitcoin_WPF
 {
@@ -176,7 +176,7 @@ namespace Bitcoin_WPF
 
                 try
                 {
-                    if(tbFee.Text != "(optional)")
+                    if (tbFee.Text != "(optional)")
                         fee = Bitcoin.DecimalFormatToBTC(Convert.ToDouble(tbFee.Text));
                 }
                 catch { }
@@ -186,6 +186,22 @@ namespace Bitcoin_WPF
 
                 // If Ok, log transaction hash.
                 WriteText($"Your Transaction\r\nHash: {x.TxHash} - Message: {x.Message} - Notice: {x.Notice}");
+            }
+            catch (Exception ex)
+            {
+                WriteText($"{DateTime.Now.ToString()} - ERROR: {ex.Message}");
+            }
+        }
+
+        private void btnReceive_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var R = Receive.ReceivePayments(tbReceiveAdr.Text, tbCallbackUrl.Text);
+
+                WriteText($"Destination: {R.DestinationAddress} - Input Address: {R.InputAddress} - Callback URL: {R.CallbackUrl} - Fee %: {R.FeePercent}");
+
+                tbReceiveInput.Text = R.InputAddress;
             }
             catch (Exception ex)
             {
