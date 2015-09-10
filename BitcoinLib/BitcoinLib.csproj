@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Bitcoin.cs" />
     <Compile Include="BlockchainAPI\ExchangeRates.cs" />
+    <Compile Include="BlockchainAPI\Receive.cs" />
     <Compile Include="BlockchainAPI\Wallet.cs" />
     <Compile Include="BRL\Util_BRL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

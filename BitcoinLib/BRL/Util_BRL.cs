@@ -13,7 +13,7 @@ namespace BitcoinLib.BRL
         const string currencySymbolBRL = "BRL";
 
         /// <summary>
-        /// Pega o ticker da Blockchain com o valor em BRL.
+        /// Retorna o ticker da Blockchain com o valor em BRL.
         /// </summary>
         /// <param name="apiCode">Código da API.</param>
         /// <returns>Retorna Buy, Last, Price15m, Sell, Symbol </returns>
