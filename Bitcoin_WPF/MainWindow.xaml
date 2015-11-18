@@ -22,7 +22,7 @@
                 </LinearGradientBrush>
             </TextBox.Background>
         </TextBox>
-        <Label x:Name="label" Content="All transactions are sent in HTTPS protocol" VerticalAlignment="Top" FontWeight="Bold" Background="#FFEC7E7E" HorizontalContentAlignment="Center" Height="26" FontSize="14.667"/>
+        <Label x:Name="label" Content="All transactions are sent in HTTPS protocol" VerticalAlignment="Top" FontWeight="Bold" Background="#FFEC7E7E" HorizontalContentAlignment="Center" Height="28" FontSize="14.667"/>
         <TabControl x:Name="tabControl" Height="154" Margin="10,82,10,0" VerticalAlignment="Top">
             <TabItem Header="Wallet Management" Margin="0,0,-19,0" Height="30" VerticalAlignment="Top">
                 <TabItem.Background>
@@ -56,17 +56,17 @@
                 </TabItem.Background>
                 <Grid Background="#FFE5E5E5" Margin="0,0,0,0">
                     <Label x:Name="label_Copy" Content="CAUTION - Its a real transaction" VerticalAlignment="Top" FontWeight="Bold" Background="#FFF7C8C8" HorizontalContentAlignment="Center" Height="26"/>
-                    <Label x:Name="label1" Content="To Address:" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="label1" Content="Sender Addr" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top"/>
                     <TextBox x:Name="tbSendAdr" HorizontalAlignment="Left" Height="23" Margin="86,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="286"/>
-                    <Label x:Name="label1_Copy" Content="From Address:" HorizontalAlignment="Left" Margin="377,31,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="tbFrmAdr" HorizontalAlignment="Left" Height="23" Margin="463,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="286" Text="(optional)"/>
+                    <Label x:Name="label1_Copy" Content="Receive Addr" HorizontalAlignment="Left" Margin="384,31,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="tbFromAdr" HorizontalAlignment="Left" Height="23" Margin="463,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="286" Text="(optional)"/>
                     <Label x:Name="label1_Copy1" Content="Amount:" HorizontalAlignment="Left" Margin="10,59,0,0" VerticalAlignment="Top"/>
                     <TextBox x:Name="tbAmount" HorizontalAlignment="Left" Height="23" Margin="86,59,0,0" TextWrapping="Wrap" Text="0.00000000" VerticalAlignment="Top" Width="77"/>
                     <Label x:Name="label1_Copy2" Content="Fee:" HorizontalAlignment="Left" Margin="257,59,0,0" VerticalAlignment="Top"/>
                     <TextBox x:Name="tbFee" HorizontalAlignment="Left" Height="23" Margin="293,59,0,0" TextWrapping="Wrap" Text="(optional)" VerticalAlignment="Top" Width="79"/>
                     <Label x:Name="label1_Copy3" Content="Message:" HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top"/>
                     <TextBox x:Name="tbMessage" HorizontalAlignment="Left" Height="23" Margin="86,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="286" Text="(optional)"/>
-                    <Button x:Name="btnSendBitcoin" Content="Send Bitcoins" HorizontalAlignment="Left" Margin="580,65,0,0" VerticalAlignment="Top" Width="149" Height="41" Foreground="#FFAC1818" FontWeight="Bold" BorderBrush="Red" UseLayoutRounding="False" Background="#FFFDD9D9" Click="btnSendBitcoin_Click"/>
+                    <Button x:Name="btnSendBitcoin" HorizontalAlignment="Left" Margin="463,65,0,0" VerticalAlignment="Top" Width="286" Height="41" Foreground="#FFAC1818" FontWeight="Bold" BorderBrush="Red" UseLayoutRounding="False" Background="#FFFDD9D9" Click="btnSendBitcoin_Click" Content="Send Bitcoins"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Receive" Height="30" VerticalAlignment="Top" Margin="41,0,-41,0">

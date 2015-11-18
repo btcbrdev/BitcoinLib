@@ -39,5 +39,24 @@ namespace xUnitTest
             output.WriteLine(T.ToString());
             Assert.IsType(typeof(double), T);
         }
+
+        [Fact]
+        public void CheckTransactio()
+        {
+            //string t = "{'tx_hash' : 3aa4cf121697f622a3f83c656e251b2016e58761392346409d25edf2fe4d193e}";
+            //string json = @"{ gettransaction: '3aa4cf121697f622a3f83c656e251b2016e58761392346409d25edf2fe4d193e',}";
+
+
+            //var jsHash = Newtonsoft.Json.Linq.JObject.Parse(json);
+            //jsHash.Add(Newtonsoft.Json.Linq.JObject.Parse(t));
+            //jsHash.Add("tx_hash", Newtonsoft.Json.Linq.JToken.Parse("3aa4cf121697f622a3f83c656e251b2016e58761392346409d25edf2fe4d193e"));
+
+            var x = new Info.Blockchain.API.BlockExplorer.BlockExplorer(); // .Transaction(jsHash);
+            var t = x.GetBlock("3aa4cf121697f622a3f83c656e251b2016e58761392346409d25edf2fe4d193e");
+
+            output.WriteLine(t.Transactions.Count.ToString());
+
+            Assert.True(t.Transactions.Count > 0 );
+        }
     }
 }

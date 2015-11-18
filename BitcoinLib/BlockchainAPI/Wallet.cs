@@ -32,8 +32,8 @@ namespace BitcoinLib.BlockchainAPI
         {
             _guid = guid;
             _password = password;
-            _secounfPassword = secoundPassword;
-            _apiCode = apiCod;
+            _secounfPassword = secoundPassword.Trim().Length > 0 ? secoundPassword : null;
+            _apiCode = apiCod.Trim().Length > 0 ? apiCod : null;
             BCw = new Info.Blockchain.API.Wallet.Wallet(_guid, _password, _secounfPassword, _apiCode);
         }
 

@@ -20,10 +20,10 @@ ehthumbs.db
 *.userprefs
 
 # Build results
-#[Bb]in/
+[Bb]in/
 [Dd]ebug/
 [Dd]ebugPublic/
-#[Rr]elease/
+[Rr]elease/
 [Rr]eleases/
 x64/
 x86/
