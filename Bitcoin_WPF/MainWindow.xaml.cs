@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BitcoinLib;
 using BitcoinLib.BlockchainAPI;
+using System.Drawing;
+using System.IO;
 
 namespace Bitcoin_WPF
 {
@@ -210,10 +212,37 @@ namespace Bitcoin_WPF
                 WriteText($"Destination: {R.DestinationAddress} - Input Address: {R.InputAddress} - Callback URL: {R.CallbackUrl} - Fee %: {R.FeePercent}");
 
                 tbReceiveInput.Text = R.InputAddress;
+
+
+                var qrCodGen = new QRCoder.QRCodeGenerator();
+                var qrCodeData = qrCodGen.CreateQrCode(R.InputAddress, QRCoder.QRCodeGenerator.ECCLevel.H);
+                var qrCode = new QRCoder.QRCode(qrCodeData);
+                var imgS = new ImageSourceConverter();
+                var img = qrCode.GetGraphic(20, "Black", "White");
+                //var img2 = (ImageSource)imgS.ConvertFrom(img);
+                var img2 = BitmapToImageSource(img);
+                imgQRrec.Source = img2;
             }
             catch (Exception ex)
             {
                 WriteText($"ERROR: {ex.Message}");
+            }
+
+        }
+
+        BitmapImage BitmapToImageSource(Bitmap bitmap)
+        {
+            using (MemoryStream memory = new MemoryStream())
+            {
+                bitmap.Save(memory, System.Drawing.Imaging.ImageFormat.Bmp);
+                memory.Position = 0;
+                BitmapImage bitmapimage = new BitmapImage();
+                bitmapimage.BeginInit();
+                bitmapimage.StreamSource = memory;
+                bitmapimage.CacheOption = BitmapCacheOption.OnLoad;
+                bitmapimage.EndInit();
+
+                return bitmapimage;
             }
         }
     }
