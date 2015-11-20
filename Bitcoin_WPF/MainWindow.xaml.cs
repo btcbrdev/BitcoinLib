@@ -112,7 +112,7 @@ namespace Bitcoin_WPF
             }
             catch (Exception ex)
             {
-                if(tbAddress.Text.Trim().Length < 1)
+                if (tbAddress.Text.Trim().Length < 1)
                     WriteText($"ERROR: Please set your wallet address below !");
                 else
                     WriteText($"ERROR: {ex.Message}");
@@ -213,14 +213,11 @@ namespace Bitcoin_WPF
 
                 tbReceiveInput.Text = R.InputAddress;
 
-
-                var qrCodGen = new QRCoder.QRCodeGenerator();
-                var qrCodeData = qrCodGen.CreateQrCode(R.InputAddress, QRCoder.QRCodeGenerator.ECCLevel.H);
+                //--=> Generate a QRCode.
+                var qrCodeData = new QRCoder.QRCodeGenerator().CreateQrCode(R.InputAddress, QRCoder.QRCodeGenerator.ECCLevel.M);
                 var qrCode = new QRCoder.QRCode(qrCodeData);
-                var imgS = new ImageSourceConverter();
-                var img = qrCode.GetGraphic(20, "Black", "White");
-                //var img2 = (ImageSource)imgS.ConvertFrom(img);
-                var img2 = BitmapToImageSource(img);
+                var img1 = qrCode.GetGraphic(100, "Black", "White");
+                var img2 = BitmapToImageSource(img1);
                 imgQRrec.Source = img2;
             }
             catch (Exception ex)
