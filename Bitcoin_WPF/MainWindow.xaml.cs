@@ -214,11 +214,8 @@ namespace Bitcoin_WPF
                 tbReceiveInput.Text = R.InputAddress;
 
                 //--=> Generate a QRCode.
-                var qrCodeData = new QRCoder.QRCodeGenerator().CreateQrCode(R.InputAddress, QRCoder.QRCodeGenerator.ECCLevel.M);
-                var qrCode = new QRCoder.QRCode(qrCodeData);
-                var img1 = qrCode.GetGraphic(100, "Black", "White");
-                var img2 = BitmapToImageSource(img1);
-                imgQRrec.Source = img2;
+                var x = new com.google.zxing.qrcode.QRCodeWriter().encode(R.InputAddress, com.google.zxing.BarcodeFormat.QR_CODE, 200, 200);
+                imgQRrec.Source = BitmapToImageSource(x.ToBitmap());
             }
             catch (Exception ex)
             {

@@ -14,6 +14,7 @@
         <Label Content="API Code" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="593,28,0,0" Height="26" Width="59"/>
         <PasswordBox x:Name="tbPassword" HorizontalAlignment="Left" Margin="342,54,0,0" VerticalAlignment="Top" Width="145" Height="23" TabIndex="2" VerticalContentAlignment="Center"/>
         <PasswordBox x:Name="tb2Password" HorizontalAlignment="Left" Margin="492,54,0,0" VerticalAlignment="Top" Width="96" Height="23" TabIndex="3" VerticalContentAlignment="Center"/>
+        <Label x:Name="label" Content="All transactions are sent in HTTPS protocol" VerticalAlignment="Top" FontWeight="Bold" Background="#FFEC7E7E" HorizontalContentAlignment="Center" Height="28" FontSize="14.667"/>
         <TextBox x:Name="tbMemo" Margin="10,241,10,10" ScrollViewer.HorizontalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" IsReadOnly="True" FontFamily="Courier New">
             <TextBox.Background>
                 <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
@@ -22,7 +23,6 @@
                 </LinearGradientBrush>
             </TextBox.Background>
         </TextBox>
-        <Label x:Name="label" Content="All transactions are sent in HTTPS protocol" VerticalAlignment="Top" FontWeight="Bold" Background="#FFEC7E7E" HorizontalContentAlignment="Center" Height="28" FontSize="14.667"/>
         <TabControl x:Name="tabControl" Height="154" Margin="10,82,10,0" VerticalAlignment="Top">
             <TabItem Header="Wallet Management" Margin="0,0,-19,0" Height="30" VerticalAlignment="Top">
                 <TabItem.Background>
@@ -56,12 +56,12 @@
                 </TabItem.Background>
                 <Grid Background="#FFE5E5E5">
                     <Label x:Name="label3" Content="Set receive address" HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Center" Margin="0,10,0,0"/>
-                    <TextBox x:Name="tbReceiveAdr" TextWrapping="Wrap" Margin="116,13,214,80" VerticalContentAlignment="Center" TabIndex="1"/>
-                    <TextBox x:Name="tbReceiveInput" Height="35" TextWrapping="Wrap" VerticalAlignment="Top" Margin="116,81,141,0" FontSize="16" VerticalContentAlignment="Center" FontWeight="Bold" IsReadOnly="True" TabIndex="4"/>
-                    <Label x:Name="label3_Copy" Content="Input Receive" HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Center" Margin="0,90,0,0"/>
-                    <TextBox x:Name="tbCallbackUrl" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Margin="116,40,214,0" FontSize="13.333" VerticalContentAlignment="Center" FontWeight="Bold" TabIndex="2"/>
-                    <Label x:Name="label3_Copy1" Content="CallBack URL" HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Center" Margin="10,39,0,0"/>
-                    <Button x:Name="btnReceive" Content="Receive&#xD;&#xA;Bitcoins" HorizontalAlignment="Right" Margin="0,13,141,0" VerticalAlignment="Top" Width="68" Height="52" Click="btnReceive_Click" VerticalContentAlignment="Top" TabIndex="3" FontWeight="Bold">
+                    <TextBox x:Name="tbReceiveAdr" TextWrapping="Wrap" Margin="116,13,201,80" VerticalContentAlignment="Center" TabIndex="1"/>
+                    <TextBox x:Name="tbReceiveInput" Height="35" TextWrapping="Wrap" VerticalAlignment="Top" Margin="116,76,115,0" FontSize="16" VerticalContentAlignment="Center" FontWeight="Bold" IsReadOnly="True" TabIndex="4"/>
+                    <Label x:Name="label3_Copy" Content="Input Receive" HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Center" Margin="0,80,0,0"/>
+                    <TextBox x:Name="tbCallbackUrl" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Margin="116,40,201,0" FontSize="13.333" VerticalContentAlignment="Center" FontWeight="Bold" TabIndex="2"/>
+                    <Label x:Name="label3_Copy1" Content="CallBack URL" HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Center" Margin="0,36,0,0"/>
+                    <Button x:Name="btnReceive" Content="Receive&#xD;&#xA;Bitcoins" HorizontalAlignment="Right" Margin="0,13,115,0" VerticalAlignment="Top" Width="68" Height="52" Click="btnReceive_Click" VerticalContentAlignment="Center" TabIndex="3" FontWeight="Bold">
                         <Button.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                 <GradientStop Color="#FFC8F5BD"/>
@@ -69,7 +69,7 @@
                             </LinearGradientBrush>
                         </Button.Background>
                     </Button>
-                    <Image x:Name="imgQRrec" Height="116" VerticalAlignment="Top" HorizontalAlignment="Right" Width="136"/>
+                    <Image x:Name="imgQRrec" Height="110" VerticalAlignment="Top" HorizontalAlignment="Right" Width="110"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Send Bitcoins (Transaction)" Margin="21,0,-46,0" Height="30" VerticalAlignment="Top">
