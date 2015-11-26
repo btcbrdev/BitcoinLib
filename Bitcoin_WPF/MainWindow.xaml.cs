@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using BitcoinLib;
 using BitcoinLib.BlockchainAPI;
 using System.Drawing;
@@ -209,7 +205,7 @@ namespace Bitcoin_WPF
             {
                 var R = Receive.ReceivePayments(tbReceiveAdr.Text, tbCallbackUrl.Text);
 
-                WriteText($"Destination: {R.DestinationAddress} - Input Address: {R.InputAddress} - Callback URL: {R.CallbackUrl} - Fee %: {R.FeePercent}");
+                WriteText($"Destination: {R.DestinationAddress} \r\nInput Address: {R.InputAddress} \r\nCallback URL: {R.CallbackUrl} \r\nFee %: {R.FeePercent}");
 
                 tbReceiveInput.Text = R.InputAddress;
 

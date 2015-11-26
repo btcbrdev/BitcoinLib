@@ -55,6 +55,7 @@
     <Compile Include="BlockchainAPI\Wallet.cs" />
     <Compile Include="BRL\Util_BRL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TxStatus.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

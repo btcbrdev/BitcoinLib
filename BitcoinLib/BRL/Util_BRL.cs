@@ -19,7 +19,7 @@ namespace BitcoinLib.BRL
         /// <returns>Retorna Buy, Last, Price15m, Sell, Symbol </returns>
         public static Currency getBtcBRLTicker(string apiCode = null)
         {
-            var _exR = new BitcoinLib.BlockchainAPI.ExchangeRates(apiCode);
+            var _exR = new global::BitcoinLib.BlockchainAPI.ExchangeRates(apiCode);
             return _exR.getBtcTicker(currencySymbolBRL);
         }
         
@@ -30,7 +30,7 @@ namespace BitcoinLib.BRL
         /// <param name="apiCode">Cádigo da API.</param>
         public static double getBRLtoBtc(double valor = 1.00, string apiCode = null)
         {
-            var _exR = new BitcoinLib.BlockchainAPI.ExchangeRates(apiCode);
+            var _exR = new global::BitcoinLib.BlockchainAPI.ExchangeRates(apiCode);
             return _exR.getToBtc(valor, currencySymbolBRL);
         }
     }

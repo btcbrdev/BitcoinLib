@@ -28,5 +28,20 @@ namespace BitcoinLib
             long v = Convert.ToInt64(val * _btcDivide);
             return v;
         }
+
+        public static TxStatus TxConfirmation(string TxHash)
+        {
+            if (string.IsNullOrWhiteSpace(TxHash.Trim()))
+                throw new ArgumentException("Undefined or Null argument are not valid!", nameof(TxHash));
+
+            var _BE = new Info.Blockchain.API.BlockExplorer.BlockExplorer();
+            var tx = _BE.GetTransaction(TxHash);
+            var LBtx = _BE.GetLatestBlock();
+
+            //if (tx == null || LBtx == null)
+            var TxConf = new TxStatus((LBtx?.Height - tx?.BlockHeight + 1), tx.DoubleSpend);
+            return TxConf;
+        }
     }
+
 }

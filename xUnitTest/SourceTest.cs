@@ -82,24 +82,17 @@ namespace xUnitTest
             this.output = output;
         }
 
-        [Fact]
-        public void Check_Transaction()
+        [Theory]
+        [InlineData("97472e01b6c517382f83b0f3e26b4117bd02b7f009c406fc63d6af1a03e38bc0")]
+        public void Check_Block_Confirmation(string hash)
         {
-            //string t = "{'tx_hash' : 968dcebdb66f441fcd154878bb1b79b7275848c0f8d55a3cef66bcc06af6fad7}";
-            //string json = @"{ gettransaction: '968dcebdb66f441fcd154878bb1b79b7275848c0f8d55a3cef66bcc06af6fad7+',}";
-
-            //var jsHash = Newtonsoft.Json.Linq.JObject.Parse(json);
-            //jsHash.Add(Newtonsoft.Json.Linq.JObject.Parse(t));
-            //jsHash.Add("tx_hash", Newtonsoft.Json.Linq.JToken.Parse("968dcebdb66f441fcd154878bb1b79b7275848c0f8d55a3cef66bcc06af6fad7"));
-
             try
             {
-                var x = new Info.Blockchain.API.BlockExplorer.BlockExplorer(); // .Transaction(jsHash);
-                var t = x.GetBlock("968dcebdb66f441fcd154878bb1b79b7275848c0f8d55a3cef66bcc06af6fad7");
+                var Conf = BitcoinLib.Bitcoin.TxConfirmation(hash);
 
-                output.WriteLine(t.Transactions.Count.ToString());
+                output.WriteLine($"Confirmations: {Conf.Confirmation} \r\nDouble Spend: {Conf.DoubleSpend}");
 
-                Assert.True(t != null && t.Transactions.Count > 0);
+                Assert.True(Conf != null && Conf.Confirmation > 0);
             }
             catch (Exception e)
             {
