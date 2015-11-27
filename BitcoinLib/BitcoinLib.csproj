@@ -50,12 +50,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bitcoin.cs" />
+    <Compile Include="BlockchainAPI\BlockExplorer.cs" />
+    <Compile Include="BlockchainAPI\CreateWallet.cs" />
     <Compile Include="BlockchainAPI\ExchangeRates.cs" />
+    <Compile Include="BlockchainAPI\PushTx.cs" />
     <Compile Include="BlockchainAPI\Receive.cs" />
+    <Compile Include="BlockchainAPI\Statistics.cs" />
     <Compile Include="BlockchainAPI\Wallet.cs" />
     <Compile Include="BRL\Util_BRL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TxStatus.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

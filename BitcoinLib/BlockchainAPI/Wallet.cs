@@ -10,6 +10,8 @@ namespace BitcoinLib.BlockchainAPI
 {
     /// <summary>
     /// https://blockchain.info/api/create_wallet
+    /// --
+    /// https://github.com/blockchain/api-v1-client-csharp/blob/master/docs/wallet.md
     /// </summary>
 
     public class Wallet

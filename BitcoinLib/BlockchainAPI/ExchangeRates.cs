@@ -9,22 +9,23 @@ namespace BitcoinLib.BlockchainAPI
     /// <summary>
     /// API Doc
     /// https://blockchain.info/api/exchange_rates_api
-    /// https://github.com/blockchain/api-v1-client-csharp
+    /// --
+    /// https://github.com/blockchain/api-v1-client-csharp/blob/master/docs/exchangerates.md
     /// </summary>
-    public class ExchangeRates
+    public class ExchangeRates : Info.Blockchain.API.ExchangeRates.ExchangeRates
     {
         private string _apiCode { get; set; }
         private Dictionary<string, Currency> __Tickers { get; set; }
 
-        public int timeOut
+        public int TimeOut
         {
             get { return HttpClient.TimeoutMs; }
             set { HttpClient.TimeoutMs = value; }
         }
 
-        public ExchangeRates(string apiCode = null)
+        public ExchangeRates(string apiCode = null) : base()
         {
-            timeOut = 20000; //20seg - Default = 10000
+            TimeOut = 20000; //20seg , Default = 10000
             _apiCode = apiCode;
         }
 
@@ -73,10 +74,10 @@ namespace BitcoinLib.BlockchainAPI
         /// Returns the value converted into Bitcoin.
         /// </summary>
         /// <param name="currency"></param>
-        public double getToBtc(double value = 1.0, string currency = "USD")
+        public double ToBTC(double value = 1.0, string currency = "USD")
         {
             CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
-            double Val = Info.Blockchain.API.ExchangeRates.ExchangeRates.ToBTC(currency, value, _apiCode);
+            double Val = ToBTC(currency, value, _apiCode);
             return Val;
         }
 
@@ -85,9 +86,9 @@ namespace BitcoinLib.BlockchainAPI
         /// </summary>
         /// <param name="currency"></param>
         /// <param name="value"></param>
-        public double getCurrencyCodeToBtc(string currency, double value)
+        public double ToBTC(string currency, double value)
         {
-            double Val = Info.Blockchain.API.ExchangeRates.ExchangeRates.ToBTC(currency, value, _apiCode);
+            double Val = ToBTC(currency, value, _apiCode);
             return Val;
         }
     }

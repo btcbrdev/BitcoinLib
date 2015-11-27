@@ -31,7 +31,7 @@ namespace BitcoinLib.BRL
         public static double getBRLtoBtc(double valor = 1.00, string apiCode = null)
         {
             var _exR = new global::BitcoinLib.BlockchainAPI.ExchangeRates(apiCode);
-            return _exR.getToBtc(valor, currencySymbolBRL);
+            return _exR.ToBTC(valor, currencySymbolBRL);
         }
     }
 }

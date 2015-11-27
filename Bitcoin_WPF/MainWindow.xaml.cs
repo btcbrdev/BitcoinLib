@@ -8,7 +8,6 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
-using BitcoinLib;
 using BitcoinLib.BlockchainAPI;
 using System.Drawing;
 using System.IO;
@@ -58,13 +57,14 @@ namespace Bitcoin_WPF
 
         private void tbnWalletAddr_Click(object sender, RoutedEventArgs e)
         {
+            const int LS = 10;
             try
             {
                 string tx = "";
                 WriteText("--- Minimal 0 confirmation to show ---");
                 foreach (var x in WL.getWalletAddress())
                 {
-                    tx += ($"{x.AddressStr} Balance: {Bitcoin.BTCtoDecimalFormat(x.Balance)} T. Received: {Bitcoin.BTCtoDecimalFormat(x.TotalReceived)} Label: {x.Label}\r\n");
+                    tx += ($"{x.AddressStr} Balance: {BitcoinLib.Bitcoin.BTCtoDecimal(x.Balance).PadLeft(LS, ' ')} T. Received: {BitcoinLib.Bitcoin.BTCtoDecimal(x.TotalReceived).PadLeft(LS, ' ')} Label: {x.Label}\r\n");
                 }
                 WriteText(tx);
 
@@ -72,7 +72,7 @@ namespace Bitcoin_WPF
                 WriteText("--- Minimal 12 confirmation to show ---");
                 foreach (var x in WL.getWalletAddress(12))
                 {
-                    tx += ($"{x.AddressStr} Balance: {Bitcoin.BTCtoDecimalFormat(x.Balance)} T. Received: {Bitcoin.BTCtoDecimalFormat(x.TotalReceived)} Label: {x.Label}\r\n");
+                    tx += ($"{x.AddressStr} Balance: {BitcoinLib.Bitcoin.BTCtoDecimal(x.Balance).PadLeft(LS, ' ')} T. Received: {BitcoinLib.Bitcoin.BTCtoDecimal(x.TotalReceived).PadLeft(LS, ' ')} Label: {x.Label}\r\n");
                 }
                 WriteText(tx);
             }
@@ -86,7 +86,7 @@ namespace Bitcoin_WPF
         {
             try
             {
-                WriteText($"Wallet Balance ฿{Bitcoin.BTCtoDecimalFormat(WL.WalletBalance())}");
+                WriteText($"Wallet Balance ฿{BitcoinLib.Bitcoin.BTCtoDecimal(WL.WalletBalance())}");
             }
             catch (Exception ex)
             {
@@ -100,11 +100,11 @@ namespace Bitcoin_WPF
             {
                 WriteText("--- Minimal 0 confirmation to show ---");
                 var ad = WL.getAddressBallance(tbAddress.Text);
-                WriteText($"Address: {ad.AddressStr} - Ballance ฿{Bitcoin.BTCtoDecimalFormat(ad.Balance)} - Total Received: {Bitcoin.BTCtoDecimalFormat(ad.TotalReceived)} -Label: {ad.Label}");
+                WriteText($"Address: {ad.AddressStr} - Ballance ฿{BitcoinLib.Bitcoin.BTCtoDecimal(ad.Balance)} - Total Received: {BitcoinLib.Bitcoin.BTCtoDecimal(ad.TotalReceived)} -Label: {ad.Label}");
 
                 WriteText("--- Minimal 12 confirmation to show ---");
                 ad = WL.getAddressBallance(tbAddress.Text, 12);
-                WriteText($"Address: {ad.AddressStr} - Ballance ฿{Bitcoin.BTCtoDecimalFormat(ad.Balance)} - Total Received: {Bitcoin.BTCtoDecimalFormat(ad.TotalReceived)} -Label: {ad.Label}");
+                WriteText($"Address: {ad.AddressStr} - Ballance ฿{BitcoinLib.Bitcoin.BTCtoDecimal(ad.Balance)} - Total Received: {BitcoinLib.Bitcoin.BTCtoDecimal(ad.TotalReceived)} -Label: {ad.Label}");
             }
             catch (Exception ex)
             {
@@ -120,7 +120,7 @@ namespace Bitcoin_WPF
             try
             {
                 var ad = WL.NewAddress($"BitcoinLib - Creadte address {DateTime.Now.ToString()}");
-                WriteText($"Address: {ad.AddressStr} - Ballance ฿{Bitcoin.BTCtoDecimalFormat(ad.Balance)} - Total Received: {Bitcoin.BTCtoDecimalFormat(ad.TotalReceived)} -Label: {ad.Label}");
+                WriteText($"Address: {ad.AddressStr} - Ballance ฿{BitcoinLib.Bitcoin.BTCtoDecimal(ad.Balance)} - Total Received: {BitcoinLib.Bitcoin.BTCtoDecimal(ad.TotalReceived)} -Label: {ad.Label}");
             }
             catch (Exception ex)
             {
@@ -161,7 +161,7 @@ namespace Bitcoin_WPF
 
             try
             {
-                amount = Bitcoin.DecimalFormatToBTC(Convert.ToDouble(tbAmount.Text));
+                amount = BitcoinLib.Bitcoin.DecimalToBTC(Convert.ToDouble(tbAmount.Text));
 
                 if (tbSendAdr.Text.Trim().Length <= 0)
                     WriteText("Set address to send !");
@@ -178,7 +178,7 @@ namespace Bitcoin_WPF
                 try
                 {
                     if (tbFee.Text != "(optional)")
-                        fee = Bitcoin.DecimalFormatToBTC(Convert.ToDouble(tbFee.Text));
+                        fee = BitcoinLib.Bitcoin.DecimalToBTC(Convert.ToDouble(tbFee.Text));
                 }
                 catch
                 {
@@ -203,7 +203,7 @@ namespace Bitcoin_WPF
         {
             try
             {
-                var R = Receive.ReceivePayments(tbReceiveAdr.Text, tbCallbackUrl.Text);
+                var R = Receive.ReceiveFunds(tbReceiveAdr.Text, tbCallbackUrl.Text);
 
                 WriteText($"Destination: {R.DestinationAddress} \r\nInput Address: {R.InputAddress} \r\nCallback URL: {R.CallbackUrl} \r\nFee %: {R.FeePercent}");
 

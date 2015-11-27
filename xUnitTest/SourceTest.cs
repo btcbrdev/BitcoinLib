@@ -58,7 +58,7 @@ namespace xUnitTest
             string xAddress = "1NF5LNSbeWHzvaeGbnyPNsJtWeEZm62wix";
             try
             {
-                var wr = BitcoinLib.BlockchainAPI.Receive.ReceivePayments(xAddress, "");
+                var wr = BitcoinLib.BlockchainAPI.Receive.ReceiveFunds(xAddress, "");
                 output.WriteLine($"Input: {wr.InputAddress} \r\n Destination: {wr.DestinationAddress} \r\n Fee: {wr.FeePercent} \r\n Call back URL: {wr.CallbackUrl}");
 
                 Assert.True(wr != null);
@@ -84,7 +84,7 @@ namespace xUnitTest
 
         [Theory]
         [InlineData("97472e01b6c517382f83b0f3e26b4117bd02b7f009c406fc63d6af1a03e38bc0")]
-        public void Check_Block_Confirmation(string hash)
+        public void Check_Tx_Confirmation(string hash)
         {
             try
             {
